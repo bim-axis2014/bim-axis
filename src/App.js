@@ -62,7 +62,7 @@ const bimBenefits = [
 ];
 
 function bannerSrc(filename) {
-  return `/images/banner/${encodeURIComponent(filename)}`;
+  return `${process.env.PUBLIC_URL}/images/banner/${encodeURIComponent(filename)}`;
 }
 
 const projects = [
@@ -399,7 +399,7 @@ function App() {
             </div>
 
             <div className="hero__art">
-              <img src="/images/banner/37834.jpg" alt="BIM-AXIS BIM and CAD drafting work" />
+              <img src={`${process.env.PUBLIC_URL}/images/banner/37834.jpg`} alt="BIM-AXIS BIM and CAD drafting work" />
             </div>
           </div>
         </section>
