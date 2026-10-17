@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders company name and banner heading', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getAllByText(/BIM-AXIS/i).length).toBeGreaterThan(0);
+  expect(screen.getByText(/FAST\. HIGH QUALITY\. PROFICIENT\./i)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /holland project/i })).toBeInTheDocument();
 });
