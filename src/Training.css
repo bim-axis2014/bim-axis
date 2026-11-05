@@ -1,0 +1,76 @@
+.training-page #courses,
+.training-page #corporate,
+.training-page #instructor,
+.training-page #enroll {
+  scroll-margin-top: 96px;
+}
+
+.training-hero h1 {
+  max-width: 14ch;
+}
+
+.training-hero__gold {
+  color: #d4b15a;
+}
+
+.course-badge {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--teal);
+  color: var(--navy);
+  font-family: Outfit, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.course-points {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: rgba(244, 248, 250, 0.78);
+}
+
+.course-points li + li {
+  margin-top: 6px;
+}
+
+.training-note {
+  margin-top: 16px;
+}
+
+.training-reasons {
+  margin: 28px 0;
+}
+
+.training-page #corporate .panel {
+  margin-bottom: 28px;
+}
+
+.training-instructor .stats a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.training-instructor .stats a:hover {
+  color: var(--teal);
+}
+
+.training-btn-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.training-page .footer .brand {
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .training-page #courses,
+  .training-page #corporate,
+  .training-page #instructor,
+  .training-page #enroll {
+    scroll-margin-top: 148px;
+  }
+}

@@ -685,6 +685,19 @@ a.btn--nav:hover {
   color: var(--teal);
 }
 
+.training-preview-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 166, 166, 0.28);
+}
+
+.training-preview-card h3 {
+  color: var(--white);
+}
+
+.training-preview-card p {
+  color: rgba(244, 248, 250, 0.78);
+}
+
 .footer {
   background: var(--navy);
   color: rgba(244, 248, 250, 0.8);
@@ -900,6 +913,73 @@ a.btn--nav:hover {
 .modal__close svg {
   width: 22px;
   height: 22px;
+}
+
+.train-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(7, 22, 39, 0.78);
+  backdrop-filter: blur(10px);
+  animation: trainFadeIn 0.35s ease;
+}
+
+.train-modal__card {
+  position: relative;
+  width: min(520px, 100%);
+  padding: 36px 32px 32px;
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  animation: trainPopIn 0.4s ease;
+}
+
+.train-modal__card h2 {
+  margin: 8px 0 12px;
+  color: var(--navy);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.train-modal__card p {
+  color: var(--muted);
+}
+
+.train-modal__card .btn {
+  margin-top: 22px;
+}
+
+.train-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.train-modal__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes trainFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes trainPopIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 720px) {

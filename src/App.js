@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
+import SiteHeader, { AxisMark } from './SiteHeader';
+import TrainingPage from './Training';
+import TrainingPrompt from './TrainingPrompt';
 
 const audience = [
   {
@@ -149,13 +152,6 @@ const team = [
   },
 ];
 
-const nav = [
-  { href: '#company', label: 'Company' },
-  { href: '#services', label: 'Services' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#portfolio', label: 'Portfolio' },
-];
-
 function IconBuilding() {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -215,16 +211,6 @@ function IconEnvelope() {
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <rect x="5" y="8" width="22" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="1.8" />
       <path d="M6.5 10.5 16 17l9.5-6.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function AxisMark({ size = 36 }) {
-  return (
-    <svg className="axis-mark" width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
-      <rect x="1" y="1" width="46" height="46" rx="8" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M8 24h32M24 8v32" stroke="#00a6a6" strokeWidth="2" />
-      <circle cx="24" cy="24" r="4.5" fill="none" stroke="#00a6a6" strokeWidth="2" />
     </svg>
   );
 }
@@ -293,16 +279,17 @@ function IsoDrawing() {
 }
 
 function App() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isTraining, setIsTraining] = useState(
+    () => new URLSearchParams(window.location.search).get('page') === 'training'
+  );
   const [activeProject, setActiveProject] = useState(null);
   const dragStartX = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const syncPage = () =>
+      setIsTraining(new URLSearchParams(window.location.search).get('page') === 'training');
+    window.addEventListener('popstate', syncPage);
+    return () => window.removeEventListener('popstate', syncPage);
   }, []);
 
   const closeProject = () => setActiveProject(null);
@@ -316,19 +303,15 @@ function App() {
     );
 
   useEffect(() => {
-    document.body.style.overflow =
-      activeProject !== null || menuOpen ? 'hidden' : '';
+    document.body.style.overflow = activeProject !== null ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [activeProject, menuOpen]);
+  }, [activeProject]);
 
   useEffect(() => {
     const onKey = (event) => {
-      if (event.key === 'Escape') {
-        if (activeProject !== null) closeProject();
-        else setMenuOpen(false);
-      }
+      if (event.key === 'Escape' && activeProject !== null) closeProject();
       if (activeProject !== null && event.key === 'ArrowLeft') showPrevProject();
       if (activeProject !== null && event.key === 'ArrowRight') showNextProject();
     };
@@ -336,47 +319,18 @@ function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, [activeProject]);
 
+  if (isTraining) {
+    return <TrainingPage />;
+  }
+
   return (
     <div className="site">
       <a className="skip" href="#main">
         Skip to content
       </a>
 
-      <header className={`header ${scrolled ? 'is-scrolled' : ''} ${menuOpen ? 'is-menu-open' : ''}`}>
-        <div className="header__bar">
-          <a className="brand" href="#top" onClick={() => setMenuOpen(false)}>
-            <AxisMark />
-            <span>
-              <strong>BIM-AXIS</strong>
-              <small>BIM / CAD Drafting Services</small>
-            </span>
-          </a>
-
-          <button
-            className="nav-toggle"
-            type="button"
-            aria-expanded={menuOpen}
-            aria-controls="site-nav"
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            <span className="sr-only">{menuOpen ? 'Close menu' : 'Open menu'}</span>
-            <span />
-            <span />
-            <span />
-          </button>
-
-          <nav id="site-nav" className="nav">
-            {nav.map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
-                {item.label}
-              </a>
-            ))}
-            <a className="btn btn--nav" href="#contact" onClick={() => setMenuOpen(false)}>
-              Contact
-            </a>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader />
+      <TrainingPrompt />
 
       <main id="main">
         <section className="hero" id="top">
@@ -508,8 +462,7 @@ function App() {
                   TC Fire Protection Engineering, PC is located in Garden City Park, New York,
                   and was founded in 2013. At this location, TC Fire Protection Engineering, PC
                   employs approximately 2 people. This business is working in the following
-                  industry: Firefighting and rescue. Annual sales for TC Fire Protection
-                  Engineering, PC are around USD 121,541.
+                  industry: Firefighting and rescue.
                 </p>
               </div>
               <ul className="stats">
@@ -528,10 +481,6 @@ function App() {
                 <li>
                   <span>Team</span>
                   <strong>Approx. 2 people</strong>
-                </li>
-                <li>
-                  <span>Annual sales</span>
-                  <strong>USD 121,541</strong>
                 </li>
               </ul>
             </article>
@@ -568,6 +517,28 @@ function App() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="section section--navy" id="training-preview">
+          <div className="wrap">
+            <header className="section__head section__head--light">
+              <p className="eyebrow">Training</p>
+              <h2>AutoCAD / BIM Mastery with the BIM-AXIS owner.</h2>
+            </header>
+            <article className="who training-preview-card">
+              <h3>Racquel Sisgon Burdeos, Autodesk Certified Instructor</h3>
+              <p>
+                Online AutoCAD and Revit courses for individuals and corporate teams — 40-hour
+                tracks with hands-on projects, Autodesk license while training, and an Autodesk
+                certificate. In partnership with BIM Philippines.
+              </p>
+              <div className="hero__actions">
+                <a className="btn btn--primary" href={`${process.env.PUBLIC_URL}/?page=training`}>
+                  View training page
+                </a>
+              </div>
+            </article>
           </div>
         </section>
 
