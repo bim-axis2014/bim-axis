@@ -653,6 +653,11 @@ a.btn--nav:hover {
   display: none;
 }
 
+.office {
+  display: grid;
+  gap: 14px;
+}
+
 .office address {
   font-style: normal;
 }
@@ -683,12 +688,14 @@ a.btn--nav:hover {
   font-weight: 700;
 }
 
+.office a,
 .person a {
   color: var(--navy);
   font-weight: 600;
   text-decoration: none;
 }
 
+.office a:hover,
 .person a:hover {
   color: var(--teal);
 }

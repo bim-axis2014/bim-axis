@@ -567,6 +567,14 @@ function App() {
                       Benguet, Philippines
                     </address>
                   </div>
+                  <div className="contact-line">
+                    <span className="contact-line__icon" aria-hidden="true">
+                      <IconEnvelope />
+                    </span>
+                    <p>
+                      <a href="mailto:info_admin@bimaxisph.com">info_admin@bimaxisph.com</a>
+                    </p>
+                  </div>
                 </article>
                 <article className="office">
                   <h3>International Branch</h3>
