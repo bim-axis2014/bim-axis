@@ -10,13 +10,15 @@ const nav = [
   { href: `${home}/?page=training`, label: 'Training' },
 ];
 
-export function AxisMark({ size = 36 }) {
+export function AxisMark({ size = 44 }) {
   return (
-    <svg className="axis-mark" width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
-      <rect x="1" y="1" width="46" height="46" rx="8" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M8 24h32M24 8v32" stroke="#00a6a6" strokeWidth="2" />
-      <circle cx="24" cy="24" r="4.5" fill="none" stroke="#00a6a6" strokeWidth="2" />
-    </svg>
+    <img
+      className="axis-mark"
+      src={`${process.env.PUBLIC_URL}/images/bim-axis-logo.jpg`}
+      alt="BIM-AXIS"
+      width={size}
+      height={size}
+    />
   );
 }
 

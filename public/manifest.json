@@ -3,9 +3,9 @@
   "name": "BIM-AXIS — BIM / CAD Drafting Services",
   "icons": [
     {
-      "src": "favicon.svg",
-      "sizes": "64x64",
-      "type": "image/svg+xml"
+      "src": "images/bim-axis-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
     }
   ],
   "start_url": ".",
