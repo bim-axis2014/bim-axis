@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 const trainingHref = `${process.env.PUBLIC_URL}/?page=training`;
 const STORAGE_KEY = 'bimaxis-training-prompt';
+const SHOW_TRAINING_MODAL = false;
 
 function TrainingPrompt() {
   const [open, setOpen] = useState(false);
@@ -31,7 +32,7 @@ function TrainingPrompt() {
     setOpen(false);
   };
 
-  if (!open) return null;
+  if (!SHOW_TRAINING_MODAL || !open) return null;
 
   return (
     <div className="train-modal" role="presentation" onClick={close}>
