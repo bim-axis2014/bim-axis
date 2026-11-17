@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/bim-axis/static/css/main.88c6f91d.css",
-    "main.js": "/bim-axis/static/js/main.37afc6d3.js",
+    "main.js": "/bim-axis/static/js/main.e85b67ff.js",
     "static/js/453.23b2d7a8.chunk.js": "/bim-axis/static/js/453.23b2d7a8.chunk.js",
     "index.html": "/bim-axis/index.html",
     "main.88c6f91d.css.map": "/bim-axis/static/css/main.88c6f91d.css.map",
-    "main.37afc6d3.js.map": "/bim-axis/static/js/main.37afc6d3.js.map",
+    "main.e85b67ff.js.map": "/bim-axis/static/js/main.e85b67ff.js.map",
     "453.23b2d7a8.chunk.js.map": "/bim-axis/static/js/453.23b2d7a8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.88c6f91d.css",
-    "static/js/main.37afc6d3.js"
+    "static/js/main.e85b67ff.js"
   ]
 }
