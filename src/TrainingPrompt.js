@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const trainingHref = `${process.env.PUBLIC_URL}/?page=training`;
 const STORAGE_KEY = 'bimaxis-training-prompt';
-const SHOW_TRAINING_MODAL = false;
+const SHOW_TRAINING_MODAL = true;
 
 function TrainingPrompt() {
   const [open, setOpen] = useState(false);
